@@ -12,6 +12,7 @@ namespace PaymentGatewayExample
 {
     public partial class frmCapturePayment : Form
     {
+        PaymentServices listUtil = new PaymentServices;
         public frmCapturePayment()
         {
             InitializeComponent();
@@ -56,11 +57,13 @@ namespace PaymentGatewayExample
             {
                 CashPayment cp = new CashPayment(Int32.Parse(textBoxOrderID.Text),DateTime.Parse(textBoxDate.Text),float.Parse(textBoxAmou.Text),textBoxReference.Text, float.Parse(textBoxTendered.Text),float.Parse(textBoxChange.Text),textBoxCurrency.Text);
                 System.Windows.Forms.MessageBox.Show(cp.ToString());
+                listUtil.cash.Add(cp);
             }
             else
             {
                 CardPayment cp = new CardPayment(Int32.Parse(textBoxOrderID.Text), DateTime.Parse(textBoxDate.Text), float.Parse(textBoxAmou.Text), textBoxReference.Text, textBoxHolder.Text, Int32.Parse(textBoxLast4.Text), textBoxProvider.Text);
                 System.Windows.Forms.MessageBox.Show(cp.ToString());
+                listUtil.cards.Add(cp);
             }
             
         }
