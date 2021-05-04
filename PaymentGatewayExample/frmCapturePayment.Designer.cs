@@ -33,18 +33,16 @@ namespace PaymentGatewayExample
             this.textBoxDate = new System.Windows.Forms.TextBox();
             this.textBoxAmou = new System.Windows.Forms.TextBox();
             this.textBoxReference = new System.Windows.Forms.TextBox();
-            this.radioButtonCash = new System.Windows.Forms.RadioButton();
-            this.radioButtonCard = new System.Windows.Forms.RadioButton();
             this.textBoxTendered = new System.Windows.Forms.TextBox();
             this.textBoxChange = new System.Windows.Forms.TextBox();
             this.textBoxCurrency = new System.Windows.Forms.TextBox();
             this.textBoxProvider = new System.Windows.Forms.TextBox();
             this.textBoxLast4 = new System.Windows.Forms.TextBox();
             this.textBoxHolder = new System.Windows.Forms.TextBox();
-            this.groupBoxOptions = new System.Windows.Forms.GroupBox();
             this.panelCash = new System.Windows.Forms.Panel();
             this.panelCard = new System.Windows.Forms.Panel();
-            this.groupBoxOptions.SuspendLayout();
+            this.comboBoxPaymentMethod = new System.Windows.Forms.ComboBox();
+            this.buttononfirm = new System.Windows.Forms.Button();
             this.panelCash.SuspendLayout();
             this.panelCard.SuspendLayout();
             this.SuspendLayout();
@@ -81,29 +79,6 @@ namespace PaymentGatewayExample
             this.textBoxReference.Size = new System.Drawing.Size(100, 23);
             this.textBoxReference.TabIndex = 3;
             this.textBoxReference.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
-            // 
-            // radioButtonCash
-            // 
-            this.radioButtonCash.AutoSize = true;
-            this.radioButtonCash.Location = new System.Drawing.Point(6, 52);
-            this.radioButtonCash.Name = "radioButtonCash";
-            this.radioButtonCash.Size = new System.Drawing.Size(51, 19);
-            this.radioButtonCash.TabIndex = 4;
-            this.radioButtonCash.TabStop = true;
-            this.radioButtonCash.Text = "Cash";
-            this.radioButtonCash.UseVisualStyleBackColor = true;
-            this.radioButtonCash.CheckedChanged += new System.EventHandler(this.radioButtonCash_CheckedChanged);
-            // 
-            // radioButtonCard
-            // 
-            this.radioButtonCard.AutoSize = true;
-            this.radioButtonCard.Location = new System.Drawing.Point(168, 52);
-            this.radioButtonCard.Name = "radioButtonCard";
-            this.radioButtonCard.Size = new System.Drawing.Size(50, 19);
-            this.radioButtonCard.TabIndex = 5;
-            this.radioButtonCard.TabStop = true;
-            this.radioButtonCard.Text = "Card";
-            this.radioButtonCard.UseVisualStyleBackColor = true;
             // 
             // textBoxTendered
             // 
@@ -153,17 +128,6 @@ namespace PaymentGatewayExample
             this.textBoxHolder.Size = new System.Drawing.Size(100, 23);
             this.textBoxHolder.TabIndex = 9;
             // 
-            // groupBoxOptions
-            // 
-            this.groupBoxOptions.Controls.Add(this.radioButtonCash);
-            this.groupBoxOptions.Controls.Add(this.radioButtonCard);
-            this.groupBoxOptions.Location = new System.Drawing.Point(26, 283);
-            this.groupBoxOptions.Name = "groupBoxOptions";
-            this.groupBoxOptions.Size = new System.Drawing.Size(224, 114);
-            this.groupBoxOptions.TabIndex = 12;
-            this.groupBoxOptions.TabStop = false;
-            this.groupBoxOptions.Text = "Payment Method";
-            // 
             // panelCash
             // 
             this.panelCash.Controls.Add(this.textBoxCurrency);
@@ -184,14 +148,36 @@ namespace PaymentGatewayExample
             this.panelCard.Size = new System.Drawing.Size(155, 165);
             this.panelCard.TabIndex = 14;
             // 
+            // comboBoxPaymentMethod
+            // 
+            this.comboBoxPaymentMethod.DisplayMember = "Cash";
+            this.comboBoxPaymentMethod.FormattingEnabled = true;
+            this.comboBoxPaymentMethod.Items.AddRange(new object[] {
+            "Cash",
+            "Card"});
+            this.comboBoxPaymentMethod.Location = new System.Drawing.Point(89, 259);
+            this.comboBoxPaymentMethod.Name = "comboBoxPaymentMethod";
+            this.comboBoxPaymentMethod.Size = new System.Drawing.Size(100, 23);
+            this.comboBoxPaymentMethod.TabIndex = 12;
+            // 
+            // buttononfirm
+            // 
+            this.buttononfirm.Location = new System.Drawing.Point(89, 373);
+            this.buttononfirm.Name = "buttononfirm";
+            this.buttononfirm.Size = new System.Drawing.Size(75, 23);
+            this.buttononfirm.TabIndex = 15;
+            this.buttononfirm.Text = "Confirm";
+            this.buttononfirm.UseVisualStyleBackColor = true;
+            // 
             // frmCapturePayment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(549, 450);
+            this.Controls.Add(this.buttononfirm);
+            this.Controls.Add(this.comboBoxPaymentMethod);
             this.Controls.Add(this.panelCard);
             this.Controls.Add(this.panelCash);
-            this.Controls.Add(this.groupBoxOptions);
             this.Controls.Add(this.textBoxReference);
             this.Controls.Add(this.textBoxAmou);
             this.Controls.Add(this.textBoxDate);
@@ -199,8 +185,6 @@ namespace PaymentGatewayExample
             this.Name = "frmCapturePayment";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.frmCapturePayment_Load);
-            this.groupBoxOptions.ResumeLayout(false);
-            this.groupBoxOptions.PerformLayout();
             this.panelCash.ResumeLayout(false);
             this.panelCash.PerformLayout();
             this.panelCard.ResumeLayout(false);
@@ -216,8 +200,6 @@ namespace PaymentGatewayExample
         private System.Windows.Forms.TextBox textBoxDate;
         private System.Windows.Forms.TextBox textBoxAmou;
         private System.Windows.Forms.TextBox textBoxReference;
-        private System.Windows.Forms.RadioButton radioButtonCash;
-        private System.Windows.Forms.RadioButton radioButtonCard;
         private System.Windows.Forms.TextBox textBoxTendered;
         private System.Windows.Forms.TextBox textBoxChange;
         private System.Windows.Forms.TextBox textBoxCurrency;
@@ -225,9 +207,10 @@ namespace PaymentGatewayExample
         private System.Windows.Forms.TextBox textBoxLast4;
         private System.Windows.Forms.TextBox textBox;
         private System.Windows.Forms.TextBox textBoxHolder;
-        private System.Windows.Forms.GroupBox groupBoxOptions;
         private System.Windows.Forms.Panel panelCash;
         private System.Windows.Forms.Panel panelCard;
+        private System.Windows.Forms.ComboBox comboBoxPaymentMethod;
+        private System.Windows.Forms.Button buttononfirm;
     }
 }
 
