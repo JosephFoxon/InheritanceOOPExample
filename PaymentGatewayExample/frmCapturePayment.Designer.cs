@@ -159,6 +159,7 @@ namespace PaymentGatewayExample
             this.comboBoxPaymentMethod.Name = "comboBoxPaymentMethod";
             this.comboBoxPaymentMethod.Size = new System.Drawing.Size(100, 23);
             this.comboBoxPaymentMethod.TabIndex = 12;
+            this.comboBoxPaymentMethod.SelectedIndexChanged += new System.EventHandler(this.comboBoxPaymentMethod_SelectedIndexChanged);
             // 
             // buttononfirm
             // 
@@ -168,12 +169,13 @@ namespace PaymentGatewayExample
             this.buttononfirm.TabIndex = 15;
             this.buttononfirm.Text = "Confirm";
             this.buttononfirm.UseVisualStyleBackColor = true;
+            this.buttononfirm.Click += new System.EventHandler(this.buttononfirm_Click);
             // 
             // frmCapturePayment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(549, 450);
+            this.ClientSize = new System.Drawing.Size(582, 450);
             this.Controls.Add(this.buttononfirm);
             this.Controls.Add(this.comboBoxPaymentMethod);
             this.Controls.Add(this.panelCard);

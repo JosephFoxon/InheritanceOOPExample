@@ -31,5 +31,35 @@ namespace PaymentGatewayExample
         {
 
         }
+
+        private void comboBoxPaymentMethod_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Object temp = comboBoxPaymentMethod.SelectedItem;
+            string temp2 = temp.ToString();
+            if (temp2.Equals("Cash")) 
+            {
+                panelCash.Visible = true;
+                panelCard.Visible = false;
+            }
+            else
+            {
+                panelCard.Visible = true;
+                panelCash.Visible = false;
+            }
+        }
+
+        private void buttononfirm_Click(object sender, EventArgs e)
+        {
+            Object temp = comboBoxPaymentMethod.SelectedItem;
+            string temp2 = temp.ToString();
+            if (temp2.Equals("Cash"))
+            {
+                CashPayment cp = new CashPayment(Int32.Parse(textBoxOrderID.Text),DateTime.Parse(textBoxDate.Text),float.Parse(textBoxAmou.Text),textBoxReference.Text, float.Parse(textBoxTendered.Text),float.Parse(textBoxChange.Text),textBoxCurrency.Text);
+            }
+            else
+            {
+                CardPayment cp = new CardPayment(Int32.Parse(textBoxOrderID.Text), DateTime.Parse(textBoxDate.Text), float.Parse(textBoxAmou.Text), textBoxReference.Text, textBoxHolder.Text, Int32.Parse(textBoxLast4.Text), textBoxProvider.Text);
+            }
+        }
     }
 }

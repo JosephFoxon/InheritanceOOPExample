@@ -10,7 +10,7 @@ namespace PaymentGatewayExample
         private float change;
         private String currency;
 
-        public CashPayment(int orderID, DateTime date, float amount, string reference, string holder, float amountTendered, float change, string currency) : base(orderID, date, amount, reference)
+        public CashPayment(int orderID, DateTime date, float amount, string reference, float amountTendered, float change, string currency) : base(orderID, date, amount, reference)
         {
             this.amountTendered = amountTendered;
             this.change = change;
