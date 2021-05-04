@@ -6,13 +6,13 @@ using System.Windows.Forms;
 
 namespace PaymentGatewayExample
 {
-    static class Main
+    static class main
     {
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void main()
+        static void Main()
         {
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
